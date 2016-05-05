@@ -107,10 +107,8 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
         ((Button) findViewById(R.id.Button_alarm_off)).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                alarmActive=false;
-                Toast.makeText(getApplicationContext(),"off",Toast.LENGTH_SHORT).show();
+                alarmActive=false;  //Toast.makeText(getApplicationContext(),"off",Toast.LENGTH_SHORT).show();
                 foo.finish();
-
             }
         });
         ((Button) findViewById(R.id.Button_decimal)).setOnClickListener(this);
