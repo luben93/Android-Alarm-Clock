@@ -15,13 +15,18 @@ import za.co.neilson.alarm.Alarm;
 import za.co.neilson.alarm.R;
 
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -60,6 +65,10 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
                 | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 
         setContentView(R.layout.alarm_alert);
+
+
+        sendNotification(this,"hej världen");//TODO better info
+
 
         Bundle bundle = this.getIntent().getExtras();
         alarm = (Alarm) bundle.getSerializable("alarm");
@@ -156,6 +165,41 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
     protected void onResume() {
         super.onResume();
         alarmActive = true;
+    }
+
+    public static int sendNotification(Context context,String str){
+
+        Toast.makeText(context,str,Toast.LENGTH_SHORT).show();
+
+        int mId=1;
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(context)
+                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setContentTitle("My notification")
+                        .setContentText(str);
+// Creates an explicit intent for an Activity in your app
+        Intent resultIntent =         new Intent(context,context.getClass());
+
+// The stack builder object will contain an artificial back stack for the
+// started Activity.
+// This ensures that navigating backward from the Activity leads out of
+// your application to the Home screen.
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+// Adds the back stack for the Intent (but not the Intent itself)
+        stackBuilder.addParentStack(context.getClass());
+// Adds the Intent that starts the Activity to the top of the stack
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(
+                        0,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+        mBuilder.setContentIntent(resultPendingIntent);
+        NotificationManager mNotificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+// mId allows you to update the notification later on.
+        mNotificationManager.notify(mId, mBuilder.build());
+        return mId;
     }
 
     private void startAlarm() {
