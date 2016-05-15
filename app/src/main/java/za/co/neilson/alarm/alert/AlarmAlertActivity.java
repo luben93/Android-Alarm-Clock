@@ -72,7 +72,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
         Bundle bundle = this.getIntent().getExtras();
         alarm = (Alarm) bundle.getSerializable("alarm");
 
-        sendNotification(this,"hej världen",alarm);//TODO better info
+        sendNotification(this,alarm.getAlarmName(),alarm);//TODO better info
 
         this.setTitle(alarm.getAlarmName());
 
@@ -177,7 +177,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.ic_launcher)
-                        .setContentTitle("My notification")
+                        .setContentTitle(context.getString(R.string.app_name))
                         .setContentText(str);
 // Creates an explicit intent for an Activity in your app
         Intent resultIntent =         new Intent(context,context.getClass());
