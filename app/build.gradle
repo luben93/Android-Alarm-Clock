@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "za.co.neilson.alarm"
-        minSdkVersion 8
+        minSdkVersion 9
         targetSdkVersion 23
     }
 
@@ -20,4 +20,7 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:23.0.0'
+   // compile 'com.google.android.gms:play-services:8.4.0'
+    compile 'com.google.android.gms:play-services-location:8.4.0'
+
 }
