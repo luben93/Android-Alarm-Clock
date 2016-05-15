@@ -67,11 +67,12 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
         setContentView(R.layout.alarm_alert);
 
 
-        sendNotification(this,"hej världen");//TODO better info
 
 
         Bundle bundle = this.getIntent().getExtras();
         alarm = (Alarm) bundle.getSerializable("alarm");
+
+        sendNotification(this,"hej världen",alarm);//TODO better info
 
         this.setTitle(alarm.getAlarmName());
 
@@ -167,11 +168,12 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
         alarmActive = true;
     }
 
-    public static int sendNotification(Context context,String str){
+    public static int sendNotification(Context context,String str,Alarm alarm){
 
         Toast.makeText(context,str,Toast.LENGTH_SHORT).show();
 
         int mId=1;
+
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.ic_launcher)
@@ -179,7 +181,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
                         .setContentText(str);
 // Creates an explicit intent for an Activity in your app
         Intent resultIntent =         new Intent(context,context.getClass());
-
+        resultIntent.putExtra("alarm", alarm);
 // The stack builder object will contain an artificial back stack for the
 // started Activity.
 // This ensures that navigating backward from the Activity leads out of
@@ -268,6 +270,8 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
         } catch (Exception e) {
 
         }
+        NotificationManager nm=(NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        nm.cancelAll();
         super.onDestroy();
     }
 
