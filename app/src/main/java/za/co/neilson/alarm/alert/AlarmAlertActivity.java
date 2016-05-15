@@ -72,7 +72,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
         Bundle bundle = this.getIntent().getExtras();
         alarm = (Alarm) bundle.getSerializable("alarm");
 
-        sendNotification(this,alarm.getAlarmName(),alarm);//TODO better info
+        sendNotification(this,alarm.getAlarmName(),alarm);
 
         this.setTitle(alarm.getAlarmName());
 
