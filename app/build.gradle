@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 18
+    compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "za.co.neilson.alarm"
         minSdkVersion 8
-        targetSdkVersion 17
+        targetSdkVersion 23
     }
 
     buildTypes {
@@ -19,5 +19,5 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:18.0.0'
+    compile 'com.android.support:appcompat-v7:23.0.0'
 }
