@@ -3,6 +3,14 @@ Open Alarm Clock
 
 A simple open source android alarm clock application that requires that you solve a math problem to deactivate the alarm. and checks your position so the alarm dosent go off in school or work
 
+## Contributing 
+
+1. pick a issue
+2. create a fork 
+3. fix the issue 
+4. send in a pull request 
+
+
 ## Acknowledgement
 
 cloned and imported in android studio from
