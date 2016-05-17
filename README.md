@@ -24,7 +24,7 @@ https://github.com/SheldonNeilson/Android-Alarm-Clock
 
 ## Licence
 
-_Copyright 2015 Lucas Persson, https://luben93.github.io_
+_Copyright 2016 Lucas Persson, https://luben93.github.io_
 
 Licensed under the Apache License, Version 2.0 (the “License”);
 you may not use this software except in compliance with the License.
